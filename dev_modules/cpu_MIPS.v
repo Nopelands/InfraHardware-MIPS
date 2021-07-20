@@ -11,4 +11,14 @@ module cpu_MIPS (
 
 // Instantiating modules
 
+    //Muxes
+
+    //Registers
+
+    //Provided modules
+
+    //Miscellaneous modules
+
+    //Control unit
+
 endmodule
