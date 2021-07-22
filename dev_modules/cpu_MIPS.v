@@ -16,11 +16,22 @@ module cpu_MIPS (
     wire [1:0] ula_b_mux_control;
     wire [2:0] wd_mux_control;
     wire [1:0] wr_mux_control;
+
     // Other control wires
+    wire [2:0] ula_control;
 
 // Data wires
+wire [31:0] ula_operand_A;
+wire [31:0] ula_operand_B;
+wire [31:0] ula_output;
 
 // Flag wires
+wire ula_overflow;
+wire ula_negative;
+wire ula_zero;
+wire ula_equals;
+wire ula_greaterthan;
+wire ula_lessthan;
 
 // Instantiating modules
 
@@ -68,7 +79,37 @@ module cpu_MIPS (
     //Registers
 
     //Provided modules
+    Banco_reg Registers (
+        clk,
+        reset,
+    );
 
+    Instr_Reg Instruction_Register (
+        clk,
+        reset,
+    );
+
+    Memoria Memory (
+
+    );
+
+    RegDesloc Shift_register (
+        clk,
+        reset,
+    );
+
+    ula32 ULA (
+        ula_operand_A,
+        ula_operand_B,
+        ula_control,
+        ula_output,
+        ula_overflow,
+        ula_negative,
+        ula_zero,
+        ula_equals,
+        ula_greaterthan,
+        ula_lessthan
+    )
     //Miscellaneous modules
 
     //Control unit
