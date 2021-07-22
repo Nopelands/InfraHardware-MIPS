@@ -1,2 +1,2 @@
 # InfraHardware-MIPS
-Implementação da arquitetura MIPS em VHDL para infraestrutura de hardware
+Implementação da arquitetura MIPS em Verilog para infraestrutura de hardware
