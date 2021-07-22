@@ -77,6 +77,45 @@ wire ula_lessthan;
     );
 
     //Registers
+    Registrador PC (
+        clk,
+        reset,
+    );
+
+    Registrador Memory_Data (
+        clk,
+        reset,
+    );
+
+    Registrador A (
+        clk,
+        reset,
+    );
+
+    Registrador B (
+        clk,
+        reset,
+    );
+
+    Registrador HI (
+        clk,
+        reset,
+    );
+
+    Registrador LO (
+        clk,
+        reset,
+    );
+
+    Registrador ALUOut (
+        clk,
+        reset,
+    );
+
+    Registrador EPC (
+        clk,
+        reset,
+    );
 
     //Provided modules
     Banco_reg Registers (
