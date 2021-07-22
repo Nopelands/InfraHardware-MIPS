@@ -8,6 +8,8 @@ module control_unit (
 
     //Mux controllers
 
+    //Register controllers
+    
     //Functional controllers
 );
     

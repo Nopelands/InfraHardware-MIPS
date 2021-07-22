@@ -17,6 +17,8 @@ module cpu_MIPS (
     wire [2:0] wd_mux_control;
     wire [1:0] wr_mux_control;
 
+    // Register control wires
+
     // Other control wires
     wire [2:0] ula_control;
 
@@ -73,7 +75,7 @@ wire ula_lessthan;
     );
 
     wr_mux WR_MUX (
-        wr_mux_control
+        wr_mux_control,
     );
 
     //Registers
@@ -148,9 +150,13 @@ wire ula_lessthan;
         ula_equals,
         ula_greaterthan,
         ula_lessthan
-    )
+    );
     //Miscellaneous modules
 
     //Control unit
+    control_unit Control_Unit (
+        clk,
+        reset,
+    );
 
 endmodule
