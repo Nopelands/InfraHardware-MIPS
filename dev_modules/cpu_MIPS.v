@@ -18,6 +18,14 @@ module cpu_MIPS (
     wire [1:0] wr_mux_control;
 
     // Register control wires
+    wire PC_control;
+    wire MDR_control;
+    wire A_control;
+    wire B_control;
+    wire HI_control;
+    wire LO_control;
+    wire ALUout_control;
+    wire EPC_control;
 
     // Other control wires
     wire [2:0] ula_control;
@@ -26,6 +34,20 @@ module cpu_MIPS (
 wire [31:0] ula_operand_A;
 wire [31:0] ula_operand_B;
 wire [31:0] ula_output;
+wire [31:0] PC_in;
+wire [31:0] PC_out;
+wire [31:0] Memory_data_out; // Memory output
+wire [31:0] MDR_out;
+wire [31:0] RegisterBank_out_A;
+wire [31:0] RegisterBank_out_B;
+wire [31:0] A_Register_out;
+wire [31:0] B_Register_out;
+wire [31:0] HI_mux_out;
+wire [31:0] LO_mux_out;
+wire [31:0] HI_Register_out;
+wire [31:0] LO_Register_out;
+wire [31:0] ALUout_output;
+wire [31:0] EPC_out;
 
 // Flag wires
 wire ula_overflow;
@@ -82,41 +104,65 @@ wire ula_lessthan;
     Registrador PC (
         clk,
         reset,
+        PC_control,
+        PC_in,
+        PC_out
     );
 
     Registrador Memory_Data (
         clk,
         reset,
+        MDR_control,
+        Memory_data_out, // Gets output from memory
+        MDR_out
     );
 
     Registrador A (
         clk,
         reset,
+        A_control,
+        RegisterBank_out_A, // Gets output 1 from register bank
+        A_Register_out
     );
 
     Registrador B (
         clk,
         reset,
+        B_control,
+        RegisterBank_out_B, // Gets output 2 from register bank
+        B_Register_out
     );
 
     Registrador HI (
         clk,
         reset,
+        HI_control,
+        HI_mux_out,
+        HI_Register_out
     );
 
     Registrador LO (
         clk,
         reset,
+        LO_control,
+        LO_mux_out,
+        LO_Register_out
     );
 
     Registrador ALUOut (
         clk,
         reset,
+        ALUout_control,
+        ula_output, // Gets operation result from ALU
+        ALUout_output
     );
 
     Registrador EPC (
         clk,
         reset,
+        EPC_control,
+        ALUout_output,
+        EPC_out
     );
 
     //Provided modules
