@@ -297,7 +297,41 @@ wire division_by_zero;
         ula_greaterthan,
         ula_lessthan
     );
+
     //Miscellaneous modules
+    div Div (
+        clk,
+        reset,
+    );
+
+    mult Mult (
+        clk,
+        reset,
+    );
+
+    extend_32 Xtnd32 (
+
+    );
+
+    load_size Load_size (
+
+    );
+
+    store_size Store_size (
+
+    );
+
+    shiftleft_2 Shiftleft2 (
+
+    );
+
+    shiftleft_2to28 Shifteleft_2to28 (
+
+    );
+
+    sign_extend Sign_xtnd (
+
+    );
 
     //Control unit
     control_unit Control_Unit (
