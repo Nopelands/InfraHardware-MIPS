@@ -337,6 +337,43 @@ wire division_by_zero;
     control_unit Control_Unit (
         clk,
         reset,
+        //instruction
+        OPcode,
+        Instruction_end, // should be funct only
+        //flags
+        ula_overflow,
+        ula_negative,
+        ula_zero,
+        ula_equals,
+        ula_greaterthan,
+        ula_lessthan,
+        division_by_zero,
+        //mux controls
+        HI_mux_control,
+        LO_mux_control,
+        in_mux_control,
+        mem_mux_control,
+        pc_mux_control,
+        sa_mux_control,
+        ula_a_mux_control,
+        ula_b_mux_control,
+        wd_mux_control,
+        wr_mux_control,
+        //register controls
+        PC_control,
+        MDR_control,
+        A_control,
+        B_control,
+        HI_control,
+        LO_control
+        ALUout_control,
+        EPC_control,
+        //functional controls
+        ula_control,
+        Register_bank_control,
+        Instruct_Reg_control,
+        MEM_control,
+        Shift_register_control,
     );
 
 endmodule
