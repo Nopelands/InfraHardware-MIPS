@@ -29,6 +29,10 @@ module cpu_MIPS (
 
     // Other control wires
     wire [2:0] ula_control;
+    wire Register_bank_control;
+    wire Instruct_Reg_control;
+    wire MEM_control;
+    wire [2:0] Shift_register_control;
 
 // Data wires
 wire [31:0] ula_operand_A;
@@ -48,6 +52,17 @@ wire [31:0] HI_Register_out;
 wire [31:0] LO_Register_out;
 wire [31:0] ALUout_output;
 wire [31:0] EPC_out;
+wire [5:0] OPcode;
+wire [4:0] RS;
+wire [4:0] RT;
+wire [15:0] Instruction_end;
+wire [31:0] MEM_mux_out;
+wire [31:0] Store_size_out;
+wire [4:0] SA_mux_out;
+wire [31:0] IN_mux_out;
+wire [31:0] Shift_register_out;
+wire [4:0] WR_mux_out;
+wire [31:0] WD_mux_out;
 
 // Flag wires
 wire ula_overflow;
@@ -169,20 +184,41 @@ wire ula_lessthan;
     Banco_reg Registers (
         clk,
         reset,
+        Register_bank_control,
+        RS,
+        RT,
+        WR_mux_out,
+        WD_mux_out,
+        RegisterBank_out_A,
+        RegisterBank_out_B
     );
 
     Instr_Reg Instruction_Register (
         clk,
         reset,
+        Instruct_Reg_control,
+        Memory_data_out,
+        OPcode,
+        RS,
+        RT,
+        Instruction_end
     );
 
     Memoria Memory (
-
+        MEM_mux_out,
+        clk,
+        MEM_control,
+        Store_size_out,
+        Memory_data_out
     );
 
     RegDesloc Shift_register (
         clk,
         reset,
+        Shift_register_control,
+        SA_mux_out,
+        IN_mux_out,
+        Shift_register_out
     );
 
     ula32 ULA (
