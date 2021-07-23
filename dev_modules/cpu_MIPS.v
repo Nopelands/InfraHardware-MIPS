@@ -38,29 +38,39 @@ module cpu_MIPS (
 wire [31:0] ula_operand_A;
 wire [31:0] ula_operand_B;
 wire [31:0] ula_output;
+
 wire [31:0] PC_in;
 wire [31:0] PC_out;
+
 wire [31:0] Memory_data_out; // Memory output
 wire [31:0] MDR_out;
+
 wire [31:0] RegisterBank_out_A;
 wire [31:0] RegisterBank_out_B;
 wire [31:0] A_Register_out;
 wire [31:0] B_Register_out;
+
 wire [31:0] HI_mux_out;
 wire [31:0] LO_mux_out;
 wire [31:0] HI_Register_out;
 wire [31:0] LO_Register_out;
+
 wire [31:0] ALUout_output;
+
 wire [31:0] EPC_out;
+
 wire [5:0] OPcode;
 wire [4:0] RS;
 wire [4:0] RT;
 wire [15:0] Instruction_end;
+
 wire [31:0] MEM_mux_out;
 wire [31:0] Store_size_out;
+
 wire [4:0] SA_mux_out;
 wire [31:0] IN_mux_out;
 wire [31:0] Shift_register_out;
+
 wire [4:0] WR_mux_out;
 wire [31:0] WD_mux_out;
 
