@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Parser_HW_2020.1</title>
+    <title>Parser_HW_2020.2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         body {
@@ -95,7 +95,7 @@
 </head>
 <body>
 <div id="container">
-    <h1 class="all" id="name">PARSER Infra-HW CC versão 2020.1.1</h1>
+    <h1 class="all" id="name">PARSER Infra-HW CC versão 2020.2.1</h1>
     <textarea class="all textHolder" id="code" placeholder="CODE"></textarea>
     <button id="play" class="btn all">>></button>
     <h2 class="all" id="debug_name">DEBUG</h2>
@@ -163,19 +163,19 @@
     let digits = /\d/;
     let numbers = /^-?\d*$/;
     let carriageReturn = /^\r\n|\r|\n$/;
-    let instructions = /^add$|^and$|^div$|^mult$|^jr$|^mfhi$|^mflo$|^sll$|^sllv$|^slt$|^sra$|^srav$|^srl$|^sub$|^break$|^rte$|^push$|^pop$|^xchg$|^addi$|^addiu$|^beq$|^bne$|^ble$|^bgt$|^blm$|^lb$|^lh$|^lui$|^lw$|^sb$|^sh$|^slti$|^sw$|^j$|^jal$|^inc$|^dec$/i;
-    let instructionsR = /^add$|^and$|^div$|^mult$|^jr$|^mfhi$|^mflo$|^sll$|^sllv$|^slt$|^sra$|^srav$|^srl$|^sub$|^break$|^rte$|^push$|^pop$|^xchg$/i;
-    let instructionsR3registers = /^add$|^and$|^sllv$|^slt$|^srav$|^sub$/i;
+    let instructions = /^add$|^addm$|^and$|^div$|^mult$|^jr$|^mfhi$|^mflo$|^sll$|^sllv$|^sllm$|^slt$|^sra$|^srav$|^srl$|^sub$|^break$|^rte$|^push$|^pop$|^xchg$|^addi$|^addiu$|^beq$|^bne$|^ble$|^bgt$|^blm$|^lb$|^lh$|^lui$|^lw$|^sb$|^sh$|^slti$|^sw$|^j$|^jal$|^inc$|^dec$/i;
+    let instructionsR = /^add$|^addm$|^and$|^div$|^mult$|^jr$|^mfhi$|^mflo$|^sll$|^sllv$|^slt$|^sra$|^srav$|^srl$|^sub$|^break$|^rte$|^push$|^pop$|^xchg$/i;
+    let instructionsR3registers = /^add$|^addm$|^and$|^sllv$|^slt$|^srav$|^sub$/i;
     let instructionsRshamt = /^sll$|^sra$|^srl$/i;
     let instructionsR2registers = /^div$|^mult$|^xchg$/i;
     let instructionsRstoppers = /^break$|^rte$/i;
     let instructionsRhilo = /^mfhi$|^mflo$/i;
     let instructionsRstack = /^push$|^pop$/i;
     let instructionsRjump = /^jr$/i;
-    let instructionsI = /^addi$|^addiu$|^beq$|^bne$|^ble$|^bgt$|^blm$|^lb$|^lh$|^lui$|^lw$|^sb$|^sh$|^slti$|^sw$/i;
+    let instructionsI = /^addi$|^addiu$|^beq$|^bne$|^ble$|^bgt$|^blm$|^lb$|^lh$|^lui$|^lw$|^sb$|^sh$|^slti$|^sllm$|^sw$/i;
     let instructionsIimmediate = /^addi$|^addiu$|^slti$/i;
     let instructionsIbranch = /^beq$|^bne$|^ble$|^bgt$|^blm$/i;
-    let instructionsIloadstore = /^lb$|^lh$|^lw$|^sb$|^sh$|^sw$/i;
+    let instructionsIloadstore = /^lb$|^lh$|^lw$|^sllm$|^sb$|^sh$|^sw$/i;
     let instructionsIlui = /^lui$/i;
     let instructionsJ = /^j$|^jal$|^inc$|^dec$/i;
     let instructionsJnumm = /^inc$|^dec$/i;
@@ -184,6 +184,7 @@
     let codes = [
         {name:/^add$/i , code: "100000"},
         {name:/^and$/i , code: "100100"},
+	    {name:/^addm$/i , code: "000101"},
         {name:/^div$/i , code: "011010"},
         {name:/^mult$/i , code: "011000"},
         {name:/^jr$/i , code: "001000"},
@@ -195,6 +196,7 @@
         {name:/^sra$/i , code: "000011"},
         {name:/^srav$/i , code: "000111"},
         {name:/^srl$/i , code: "000010"},
+	    {name:/^sllm$/i , code: "000001"},
         {name:/^sub$/i , code: "100010"},
         {name:/^break$/i , code: "001101"},
         {name:/^rte$/i , code: "010011"},
